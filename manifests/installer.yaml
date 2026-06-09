@@ -1,0 +1,8 @@
+AddonId: NintendoExophaseImporter
+Packages:
+  - Version: 0.1.0
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2026-06-09
+    PackageUrl: https://github.com/MatisAgr/Playnite-Switch-Games/releases/download/v0.1.0/NintendoExophaseImporter_0_1_0.pext
+    Changelog:
+      - Initial release
