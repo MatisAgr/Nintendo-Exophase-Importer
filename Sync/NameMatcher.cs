@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SwitchPlaytimeExophase.Sync
+namespace NintendoExophaseImporter.Sync
 {
     /// <summary>
     /// Normalizes game titles so an Exophase entry can be matched against a Playnite

@@ -6,10 +6,10 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using Playnite.SDK;
 using Playnite.SDK.Models;
-using SwitchPlaytimeExophase.Exophase;
-using SwitchPlaytimeExophase.Settings;
+using NintendoExophaseImporter.Exophase;
+using NintendoExophaseImporter.Settings;
 
-namespace SwitchPlaytimeExophase.Sync
+namespace NintendoExophaseImporter.Sync
 {
     public class SyncResult
     {
@@ -43,10 +43,10 @@ namespace SwitchPlaytimeExophase.Sync
         private const string SourceName = "Nintendo";
 
         private readonly IPlayniteAPI api;
-        private readonly SwitchPlaytimeExophasePlugin plugin;
+        private readonly NintendoExophaseImporterPlugin plugin;
         private readonly ILogger logger;
 
-        public SyncService(IPlayniteAPI api, SwitchPlaytimeExophasePlugin plugin, ILogger logger)
+        public SyncService(IPlayniteAPI api, NintendoExophaseImporterPlugin plugin, ILogger logger)
         {
             this.api = api;
             this.plugin = plugin;
@@ -315,7 +315,7 @@ namespace SwitchPlaytimeExophase.Sync
         }
 
         /// <returns>true if anything changed (so the caller persists the game).</returns>
-        private bool ApplyUpdate(Game game, SwitchGameEntry entry, SwitchPlaytimeSettings settings)
+        private bool ApplyUpdate(Game game, SwitchGameEntry entry, NintendoExophaseSettings settings)
         {
             bool changed = false;
 
@@ -341,7 +341,7 @@ namespace SwitchPlaytimeExophase.Sync
             return changed;
         }
 
-        private Game CreateGame(SwitchGameEntry entry, List<Guid> platformIds, Guid sourceId, SwitchPlaytimeSettings settings)
+        private Game CreateGame(SwitchGameEntry entry, List<Guid> platformIds, Guid sourceId, NintendoExophaseSettings settings)
         {
             var game = new Game(entry.Title)
             {

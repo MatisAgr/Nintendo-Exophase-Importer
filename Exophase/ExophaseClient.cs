@@ -8,7 +8,7 @@ using System.Threading;
 using Playnite.SDK;
 using Playnite.SDK.Data;
 
-namespace SwitchPlaytimeExophase.Exophase
+namespace NintendoExophaseImporter.Exophase
 {
     /// <summary>
     /// One Nintendo Switch game as projected from Exophase, ready to be matched

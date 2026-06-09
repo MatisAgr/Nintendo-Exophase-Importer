@@ -13,11 +13,11 @@ $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 $out = Join-Path $root "bin\Release"
 
-dotnet build (Join-Path $root "SwitchPlaytimeExophase.csproj") -c Release
+dotnet build (Join-Path $root "NintendoExophaseImporter.csproj") -c Release
 if ($LASTEXITCODE -ne 0) { throw "Build failed." }
 
 if ($Install) {
-    $dst = Join-Path $env:AppData "Playnite\Extensions\SwitchPlaytime_Exophase"
+    $dst = Join-Path $env:AppData "Playnite\Extensions\NintendoExophaseImporter"
     New-Item -ItemType Directory -Force $dst | Out-Null
     Copy-Item (Join-Path $out "*") $dst -Recurse -Force
     Write-Host "Installed to $dst -- restart Playnite." -ForegroundColor Green

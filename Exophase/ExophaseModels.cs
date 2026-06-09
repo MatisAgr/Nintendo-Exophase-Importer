@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Playnite.SDK.Data;
 
-namespace SwitchPlaytimeExophase.Exophase
+namespace NintendoExophaseImporter.Exophase
 {
     /// <summary>
     /// Top level response of https://api.exophase.com/public/player/{id}/games

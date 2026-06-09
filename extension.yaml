@@ -1,7 +1,7 @@
-Id: SwitchPlaytime_Exophase
-Name: Switch Playtime (Exophase)
+Id: NintendoExophaseImporter
+Name: Nintendo Exophase Importer
 Author: Tisma
 Version: 0.1.0
-Module: SwitchPlaytimeExophase.dll
+Module: NintendoExophaseImporter.dll
 Type: GenericPlugin
 Icon: icon.png

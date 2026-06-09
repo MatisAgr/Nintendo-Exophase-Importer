@@ -3,36 +3,36 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using Playnite.SDK;
 using Playnite.SDK.Plugins;
-using SwitchPlaytimeExophase.Exophase;
-using SwitchPlaytimeExophase.Settings;
-using SwitchPlaytimeExophase.Sync;
+using NintendoExophaseImporter.Exophase;
+using NintendoExophaseImporter.Settings;
+using NintendoExophaseImporter.Sync;
 
-namespace SwitchPlaytimeExophase
+namespace NintendoExophaseImporter
 {
-    public class SwitchPlaytimeExophasePlugin : GenericPlugin
+    public class NintendoExophaseImporterPlugin : GenericPlugin
     {
         private static readonly ILogger logger = LogManager.GetLogger();
 
-        public SwitchPlaytimeSettingsViewModel SettingsViewModel { get; }
+        public NintendoExophaseSettingsViewModel SettingsViewModel { get; }
 
         public override Guid Id { get; } = Guid.Parse("1f9cc97c-a416-4b2e-b28d-a00fe5048404");
 
-        public SwitchPlaytimeExophasePlugin(IPlayniteAPI api) : base(api)
+        public NintendoExophaseImporterPlugin(IPlayniteAPI api) : base(api)
         {
-            SettingsViewModel = new SwitchPlaytimeSettingsViewModel(this);
+            SettingsViewModel = new NintendoExophaseSettingsViewModel(this);
             Properties = new GenericPluginProperties { HasSettings = true };
         }
 
         public override ISettings GetSettings(bool firstRunSettings) => SettingsViewModel;
 
-        public override UserControl GetSettingsView(bool firstRunSettings) => new SwitchPlaytimeSettingsView();
+        public override UserControl GetSettingsView(bool firstRunSettings) => new NintendoExophaseSettingsView();
 
         public override IEnumerable<MainMenuItem> GetMainMenuItems(GetMainMenuItemsArgs args)
         {
             yield return new MainMenuItem
             {
-                Description = "Sync Switch playtime from Exophase",
-                MenuSection = "@Switch Playtime (Exophase)",
+                Description = "Sync Nintendo Switch playtime from Exophase",
+                MenuSection = "@Nintendo Exophase Importer",
                 Action = _ => RunSync()
             };
         }
@@ -42,7 +42,7 @@ namespace SwitchPlaytimeExophase
             if (!SettingsViewModel.VerifySettings(out var errors))
             {
                 PlayniteApi.Dialogs.ShowErrorMessage(
-                    string.Join("\n", errors), "Switch Playtime (Exophase)");
+                    string.Join("\n", errors), "Nintendo Exophase Importer");
                 OpenSettingsView();
                 return;
             }
@@ -52,7 +52,7 @@ namespace SwitchPlaytimeExophase
 
             var progressResult = PlayniteApi.Dialogs.ActivateGlobalProgress(
                 a => { syncResult = service.Sync(text => a.Text = text, a.CancelToken); },
-                new GlobalProgressOptions("Syncing Switch playtime (Exophase)…", cancelable: true)
+                new GlobalProgressOptions("Syncing Nintendo Switch playtime (Exophase)…", cancelable: true)
                 {
                     IsIndeterminate = true
                 });
@@ -64,17 +64,17 @@ namespace SwitchPlaytimeExophase
 
             if (progressResult.Error != null)
             {
-                logger.Error(progressResult.Error, "Switch/Exophase sync failed.");
+                logger.Error(progressResult.Error, "Nintendo Switch / Exophase sync failed.");
                 var message = progressResult.Error is ExophaseException
                     ? progressResult.Error.Message
                     : "Sync failed: " + progressResult.Error.Message;
-                PlayniteApi.Dialogs.ShowErrorMessage(message, "Switch Playtime (Exophase)");
+                PlayniteApi.Dialogs.ShowErrorMessage(message, "Nintendo Exophase Importer");
                 return;
             }
 
             PlayniteApi.Dialogs.ShowMessage(
                 syncResult?.ToString() ?? "No result.",
-                "Switch Playtime (Exophase)");
+                "Nintendo Exophase Importer");
         }
     }
 }

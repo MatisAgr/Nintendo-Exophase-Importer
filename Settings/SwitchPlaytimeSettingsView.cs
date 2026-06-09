@@ -3,21 +3,21 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace SwitchPlaytimeExophase.Settings
+namespace NintendoExophaseImporter.Settings
 {
     /// <summary>
     /// Settings panel built in code (no XAML) so the project compiles with the plain
     /// dotnet SDK, without the WPF markup-compile targets that ship with Visual Studio.
-    /// The DataContext is set by Playnite to the <see cref="SwitchPlaytimeSettingsViewModel"/>.
+    /// The DataContext is set by Playnite to the <see cref="NintendoExophaseSettingsViewModel"/>.
     /// </summary>
-    public class SwitchPlaytimeSettingsView : UserControl
+    public class NintendoExophaseSettingsView : UserControl
     {
-        public SwitchPlaytimeSettingsView()
+        public NintendoExophaseSettingsView()
         {
             var root = new StackPanel { Margin = new Thickness(24, 18, 24, 24), MaxWidth = 720, HorizontalAlignment = HorizontalAlignment.Left };
 
-            root.Children.Add(Title("Switch Playtime (Exophase)"));
-            root.Children.Add(Intro("Import your Nintendo Switch / Switch 2 playtime from Exophase into Playnite."));
+            root.Children.Add(Title("Nintendo Exophase Importer"));
+            root.Children.Add(Intro("Import Nintendo Switch / Switch 2 games, playtime, and metadata from Exophase into Playnite."));
 
             Section(root, "Exophase account");
             root.Children.Add(FieldLabel("Exophase username"));
@@ -57,7 +57,7 @@ namespace SwitchPlaytimeExophase.Settings
             root.Children.Add(NumberField("Ignore games played less than", "Settings.MinPlaytimeMinutes", "minutes  (0 = import all)"));
 
             Section(root, null);
-            root.Children.Add(Description("Run: main menu → Add-ons → Switch Playtime (Exophase) → Sync Switch playtime from Exophase."));
+            root.Children.Add(Description("Run: main menu → Add-ons → Nintendo Exophase Importer → Sync Nintendo Switch playtime from Exophase."));
 
             Content = new ScrollViewer
             {

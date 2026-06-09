@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Playnite.SDK;
 using Playnite.SDK.Data;
 
-namespace SwitchPlaytimeExophase.Settings
+namespace NintendoExophaseImporter.Settings
 {
-    public class SwitchPlaytimeSettings : ObservableObject
+    public class NintendoExophaseSettings : ObservableObject
     {
         private string username = string.Empty;
 
@@ -141,23 +141,23 @@ namespace SwitchPlaytimeExophase.Settings
         public string CachedPlayerId { get; set; } = string.Empty;
     }
 
-    public class SwitchPlaytimeSettingsViewModel : ObservableObject, ISettings
+    public class NintendoExophaseSettingsViewModel : ObservableObject, ISettings
     {
-        private readonly SwitchPlaytimeExophasePlugin plugin;
-        private SwitchPlaytimeSettings editingClone;
-        private SwitchPlaytimeSettings settings;
+        private readonly NintendoExophaseImporterPlugin plugin;
+        private NintendoExophaseSettings editingClone;
+        private NintendoExophaseSettings settings;
 
-        public SwitchPlaytimeSettings Settings
+        public NintendoExophaseSettings Settings
         {
             get => settings;
             set => SetValue(ref settings, value);
         }
 
-        public SwitchPlaytimeSettingsViewModel(SwitchPlaytimeExophasePlugin plugin)
+        public NintendoExophaseSettingsViewModel(NintendoExophaseImporterPlugin plugin)
         {
             this.plugin = plugin;
-            var saved = plugin.LoadPluginSettings<SwitchPlaytimeSettings>();
-            Settings = saved ?? new SwitchPlaytimeSettings();
+            var saved = plugin.LoadPluginSettings<NintendoExophaseSettings>();
+            Settings = saved ?? new NintendoExophaseSettings();
         }
 
         public void BeginEdit()

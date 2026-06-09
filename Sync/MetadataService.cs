@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -10,7 +9,7 @@ using Playnite.SDK;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
 
-namespace SwitchPlaytimeExophase.Sync
+namespace NintendoExophaseImporter.Sync
 {
     /// <summary>
     /// Fills in game metadata (cover, description, genres, release date, …) by driving an

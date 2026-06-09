@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyName>SwitchPlaytimeExophase</AssemblyName>
-    <RootNamespace>SwitchPlaytimeExophase</RootNamespace>
+    <AssemblyName>NintendoExophaseImporter</AssemblyName>
+    <RootNamespace>NintendoExophaseImporter</RootNamespace>
     <LangVersion>7.3</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
