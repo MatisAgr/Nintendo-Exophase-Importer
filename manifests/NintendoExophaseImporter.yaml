@@ -3,8 +3,8 @@ Type: Generic
 Name: Nintendo Exophase Importer
 Author: Tisma
 ShortDescription: Import Nintendo Switch / Switch 2 games and playtime from Exophase into Playnite.
-InstallerManifestUrl: https://raw.githubusercontent.com/MatisAgr/Playnite-Switch-Games/main/manifests/installer.yaml
-SourceUrl: https://github.com/MatisAgr/Playnite-Switch-Games
+InstallerManifestUrl: https://raw.githubusercontent.com/MatisAgr/Nintendo-Exophase-Importer/main/manifests/installer.yaml
+SourceUrl: https://github.com/MatisAgr/Nintendo-Exophase-Importer
 Links:
   Tisma Website: https://tisma.dev
   Tisma GitHub: https://github.com/MatisAgr/
@@ -12,4 +12,4 @@ Description: |
   Pulls the playtime of your Nintendo Switch and Switch 2 games from your Exophase profile
   and writes it into Playnite.
 Tags: ["switch", "nintendo", "playtime", "exophase", "sync"]
-IconUrl: https://raw.githubusercontent.com/MatisAgr/Playnite-Switch-Games/main/icon.png
+IconUrl: https://raw.githubusercontent.com/MatisAgr/Nintendo-Exophase-Importer/main/icon.png
