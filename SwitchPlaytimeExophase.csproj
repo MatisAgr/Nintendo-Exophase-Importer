@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyName>SwitchPlaytimeExophase</AssemblyName>
+    <RootNamespace>SwitchPlaytimeExophase</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Deterministic>true</Deterministic>
+    <!-- Plugins are loaded into the Playnite process, which already provides
+         the WPF and SDK assemblies, so we never want them copied to output. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Include="PlayniteSDK" Version="6.16.0" />
+  </ItemGroup>
+
+  <!-- WPF assemblies needed for the (code-only) settings UserControl.
+       Private=false: Playnite already loads these at runtime. -->
+  <ItemGroup>
+    <Reference Include="PresentationCore" Private="false" />
+    <Reference Include="PresentationFramework" Private="false" />
+    <Reference Include="WindowsBase" Private="false" />
+    <Reference Include="System.Xaml" Private="false" />
+    <Reference Include="System.Net.Http" Private="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="extension.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Don't ship the Playnite SDK with the extension: Playnite provides its own
+       copy and a duplicate can cause assembly load conflicts. -->
+  <Target Name="RemoveSdkFromOutput" AfterTargets="Build">
+    <ItemGroup>
+      <_SdkArtifacts Include="$(OutDir)Playnite.SDK.dll" />
+      <_SdkArtifacts Include="$(OutDir)Playnite.SDK.xml" />
+      <_SdkArtifacts Include="$(OutDir)Playnite.SDK.pdb" />
+    </ItemGroup>
+    <Delete Files="@(_SdkArtifacts)" />
+  </Target>
+
+</Project>

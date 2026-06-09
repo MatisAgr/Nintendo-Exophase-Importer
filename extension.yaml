@@ -1,0 +1,7 @@
+Id: SwitchPlaytime_Exophase
+Name: Switch Playtime (Exophase)
+Author: Tisma
+Version: 0.1.0
+Module: SwitchPlaytimeExophase.dll
+Type: GenericPlugin
+Icon: icon.png
