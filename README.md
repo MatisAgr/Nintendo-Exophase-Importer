@@ -1,16 +1,23 @@
-# Switch Playtime (Exophase) — Playnite extension
+# Nintendo Exophase Importer — Playnite extension
 
 Pulls the playtime of your **Nintendo Switch** and **Switch 2** games from your
 [Exophase](https://www.exophase.com/) profile and writes it into Playnite:
 
 - **updates** the playtime of Switch games already in your library (matched by name);
 - **imports** missing Switch games as new entries (platform *Nintendo Switch* / *Nintendo Switch 2*,
-  source *Exophase (Nintendo Switch)*), with playtime, last‑played date and a link to Exophase;
+  source *Nintendo*), with playtime, last‑played date and a link to Exophase;
 - optionally **downloads metadata from IGDB** (cover, description, genres, release date, …)
   for the imported games.
 
 Syncing is **idempotent**: imported games are tagged with a stable `GameId`
 (`exophase:<id>`), so running it again updates instead of duplicating.
+
+## Requirements
+
+> **Your profiles must be public:**
+> - **Exophase profile** — must be set to public in your Exophase account settings.
+> - **Nintendo Switch activity log** — must be set to public in your Nintendo Switch console
+>   settings (System → User Settings → Friend Settings → Show play activity).
 
 ## How it works
 
@@ -27,7 +34,7 @@ separate subdomain (which is why it does not show up in the Network tab of the p
 
 ## Settings
 
-Playnite → Settings → Add-ons → **Switch Playtime (Exophase)**:
+Playnite → Settings → Add-ons → **Nintendo Exophase Importer**:
 
 **Exophase account**
 - **Exophase username** — your global Exophase account username (this is **not** your
@@ -64,7 +71,7 @@ Playnite → Settings → Add-ons → **Switch Playtime (Exophase)**:
 
 ## Usage
 
-Main menu → **Add-ons** → **Switch Playtime (Exophase)** → **Sync Switch playtime from Exophase**.
+Main menu → **Add-ons** → **Nintendo Exophase Importer** → **Sync Nintendo Switch playtime from Exophase**.
 
 ## Build (development)
 
@@ -72,7 +79,7 @@ Requirements: a .NET SDK (≥ 5) with `dotnet`, Playnite installed (it provides
 `Playnite.SDK.dll` at runtime), and the `nuget.org` package source configured.
 
 ```powershell
-dotnet build .\SwitchPlaytimeExophase.csproj -c Release
+dotnet build .\NintendoExophaseImporter.csproj -c Release
 ```
 
 Output lands in `bin\Release\` (DLL + `extension.yaml` + `icon.png`). The Playnite SDK is
@@ -92,13 +99,15 @@ Helper script:
 & "$env:LOCALAPPDATA\Playnite\Toolbox.exe" pack ".\bin\Release" ".\dist"
 ```
 
-Double‑click the resulting `dist\SwitchPlaytime_Exophase_<version>.pext` to install.
+Double‑click the resulting `dist\NintendoExophaseImporter_<version>.pext` to install.
 
 ## Notes & limitations
 
+- **Both profiles must be public** — your Exophase profile and your Nintendo Switch activity
+  log (console settings) must be set to public, otherwise the sync cannot retrieve your data.
 - **Exophase only tracks the last ~20 games** the Switch shows in its activity log
   (a Nintendo limit). Once a game has been seen, Exophase keeps it, but the initial history
-  may be incomplete. The Switch activity log must be public.
+  may be incomplete.
 - **Metadata matching is by name**, so demos / unusual titles may not be found on IGDB
   (logged, not an error).
 - Achievements / completion percent are not meaningful for Switch and are not imported.

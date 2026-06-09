@@ -24,7 +24,10 @@ namespace NintendoExophaseImporter.Settings
             root.Children.Add(Bound(new TextBox(), "Settings.Username"));
             root.Children.Add(Description("Your global Exophase account username — not your Nintendo account name. A profile URL also works."));
             root.Children.Add(Note(
-                "Make sure your Exophase data is up to date first:\n" +
+                "Requirements:\n" +
+                "- Your Exophase profile must be public.\n" +
+                "- Your Nintendo Switch activity log must be public (Nintendo Switch settings).\n\n" +
+                "Keep your Exophase data up to date:\n" +
                 "1. Open your Exophase user page.\n" +
                 "2. Click the Nintendo tab → Options → Run profile sync.\n" +
                 "3. Wait a moment, then run the sync from this add-on."));
