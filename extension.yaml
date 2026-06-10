@@ -1,7 +1,7 @@
 Id: NintendoExophaseImporter
 Name: Nintendo Exophase Importer
 Author: Tisma
-Version: 0.1.0
+Version: 0.2.0
 Module: NintendoExophaseImporter.dll
-Type: GenericPlugin
+Type: GameLibrary
 Icon: icon.png

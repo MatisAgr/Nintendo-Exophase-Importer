@@ -1,8 +1,8 @@
 AddonId: NintendoExophaseImporter
 Packages:
-  - Version: 0.1.0
+  - Version: 0.2.0
     RequiredApiVersion: 6.0.0
     ReleaseDate: 2026-06-09
-    PackageUrl: https://github.com/MatisAgr/Nintendo-Exophase-Importer/releases/download/v0.1.0/NintendoExophaseImporter_0_1_0.pext
+    PackageUrl: https://github.com/MatisAgr/Nintendo-Exophase-Importer/releases/download/v0.2.0/NintendoExophaseImporter_0_2_0.pext
     Changelog:
       - Initial release
