@@ -87,6 +87,7 @@ namespace NintendoExophaseImporter
                     Playtime = settings.ImportPlaytime ? entry.PlaytimeSeconds : 0UL,
                     IsInstalled = false,
                     Platforms = platforms,
+                    Source = new MetadataNameProperty("Nintendo"),
                 };
 
                 if (settings.ImportLastActivity && entry.LastPlayed.HasValue)
