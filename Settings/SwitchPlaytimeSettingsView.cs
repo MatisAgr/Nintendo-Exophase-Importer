@@ -5,11 +5,6 @@ using System.Windows.Media;
 
 namespace NintendoExophaseImporter.Settings
 {
-    /// <summary>
-    /// Settings panel built in code (no XAML) so the project compiles with the plain
-    /// dotnet SDK, without the WPF markup-compile targets that ship with Visual Studio.
-    /// The DataContext is set by Playnite to the <see cref="NintendoExophaseSettingsViewModel"/>.
-    /// </summary>
     public class NintendoExophaseSettingsView : UserControl
     {
         public NintendoExophaseSettingsView()
@@ -17,7 +12,7 @@ namespace NintendoExophaseImporter.Settings
             var root = new StackPanel { Margin = new Thickness(24, 18, 24, 24), MaxWidth = 720, HorizontalAlignment = HorizontalAlignment.Left };
 
             root.Children.Add(Title("Nintendo Exophase Importer"));
-            root.Children.Add(Intro("Import Nintendo Switch / Switch 2 games, playtime, and metadata from Exophase into Playnite."));
+            root.Children.Add(Intro("Import Nintendo Switch / Switch 2 games and playtime from Exophase into Playnite."));
 
             Section(root, "Exophase account");
             root.Children.Add(FieldLabel("Exophase username"));
@@ -36,31 +31,15 @@ namespace NintendoExophaseImporter.Settings
             Check(root, "Import Switch games", "Settings.ImportSwitch1");
             Check(root, "Import Switch 2 games", "Settings.ImportSwitch2");
 
-            Section(root, "Library");
-            Check(root, "Add games missing from Playnite", "Settings.AddMissingGames");
-            Check(root, "Update games already in Playnite", "Settings.UpdateExistingGames");
-            Check(root, "Only match games on a Switch platform  (recommended)", "Settings.OnlyMatchSwitchPlatform",
-                "Avoids overwriting another version (PC, etc.) of the same game. Disable if your existing Switch games aren't tagged with a Switch platform.");
-
             Section(root, "Playtime");
             Check(root, "Import playtime", "Settings.ImportPlaytime");
-            Check(root, "Overwrite existing playtime", "Settings.OverwriteExistingPlaytime",
-                "When on, replaces the current playtime with the Exophase value. When off, keeps whichever is larger.");
 
             Section(root, "Other data");
             Check(root, "Import last played date", "Settings.ImportLastActivity");
 
-            Section(root, "Metadata");
-            Check(root, "Download metadata from IGDB for imported games", "Settings.DownloadMetadata");
-            Check(root, "Overwrite existing metadata", "Settings.OverwriteMetadata",
-                "When on, refreshes all fields from IGDB. When off, only fills fields that are still empty (e.g. a missing cover).");
-
             Section(root, "Filters");
             Check(root, "Skip demos", "Settings.SkipDemos");
             root.Children.Add(NumberField("Ignore games played less than", "Settings.MinPlaytimeMinutes", "minutes  (0 = import all)"));
-
-            Section(root, null);
-            root.Children.Add(Description("Run: main menu → Add-ons → Nintendo Exophase Importer → Sync Nintendo Switch playtime from Exophase."));
 
             Content = new ScrollViewer
             {
@@ -82,21 +61,13 @@ namespace NintendoExophaseImporter.Settings
 
         private static void Section(Panel parent, string title)
         {
-            if (!string.IsNullOrEmpty(title))
+            parent.Children.Add(new TextBlock
             {
-                parent.Children.Add(new TextBlock
-                {
-                    Text = title,
-                    FontWeight = FontWeights.SemiBold,
-                    FontSize = 14,
-                    Margin = new Thickness(0, 18, 0, 4)
-                });
-            }
-            else
-            {
-                parent.Children.Add(new TextBlock { Margin = new Thickness(0, 10, 0, 0) });
-            }
-
+                Text = title,
+                FontWeight = FontWeights.SemiBold,
+                FontSize = 14,
+                Margin = new Thickness(0, 18, 0, 4)
+            });
             parent.Children.Add(new Border
             {
                 Height = 1,
@@ -155,9 +126,7 @@ namespace NintendoExophaseImporter.Settings
             parent.Children.Add(cb);
 
             if (!string.IsNullOrEmpty(description))
-            {
                 parent.Children.Add(Description(description));
-            }
         }
 
         private static StackPanel NumberField(string label, string path, string suffix)
