@@ -1,4 +1,12 @@
+<div align="center">
+
 # Nintendo Exophase Importer — Playnite extension
+
+
+  <img src="icon.png" width=160/>
+  
+</div>
+</br>
 
 Pulls the playtime of your **Nintendo Switch** and **Switch 2** games from your
 [Exophase](https://www.exophase.com/) profile and writes it into Playnite:
